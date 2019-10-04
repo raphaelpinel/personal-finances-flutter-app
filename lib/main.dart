@@ -37,7 +37,6 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
@@ -53,6 +52,24 @@ class MyHomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
+          Card(
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  TextField(decoration: InputDecoration(labelText: 'Title'),),
+                  TextField(decoration: InputDecoration(labelText: 'Amount'),),
+                  FlatButton(
+                    child: Text('Add Transaction'),
+                    textColor: Colors.purple,
+                    onPressed: () {},
+                  )
+                ],
+              ),
+            ),
+          ),
           Column(
             children: transactions.map((tx) {
               return Card(
@@ -64,12 +81,18 @@ class MyHomePage extends StatelessWidget {
                         vertical: 10,
                       ),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.purple, width: 2,),
+                        border: Border.all(
+                          color: Colors.purple,
+                          width: 2,
+                        ),
                       ),
                       padding: EdgeInsets.all(10),
                       child: Text(
                         '${tx.amount} €',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.purple),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.purple),
                       ),
                     ),
                     Column(
@@ -77,10 +100,17 @@ class MyHomePage extends StatelessWidget {
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(bottom: 3.0),
-                          child: Text(tx.title, style: TextStyle(color: Colors.blue, fontSize: 18, fontWeight: FontWeight.bold),),
+                          child: Text(
+                            tx.title,
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                         Text(
-                         DateFormat('E dd.MM.yyyy H:m').format(tx.date), style: TextStyle(color: Colors.grey, fontSize: 14),
+                          DateFormat('E dd.MM.yyyy H:m').format(tx.date),
+                          style: TextStyle(color: Colors.grey, fontSize: 14),
                         ),
                       ],
                     ),
