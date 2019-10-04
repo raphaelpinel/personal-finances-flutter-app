@@ -68,7 +68,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        '${tx.amount.toString()} €',
+                        '${tx.amount} €',
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.purple),
                       ),
                     ),
@@ -80,7 +80,7 @@ class MyHomePage extends StatelessWidget {
                           child: Text(tx.title, style: TextStyle(color: Colors.blue, fontSize: 18, fontWeight: FontWeight.bold),),
                         ),
                         Text(
-                         new DateFormat('E dd.MM.yyyy H:m').format(tx.date.toLocal()), style: TextStyle(color: Colors.grey, fontSize: 14),
+                         DateFormat('E dd.MM.yyyy H:m').format(tx.date), style: TextStyle(color: Colors.grey, fontSize: 14),
                         ),
                       ],
                     ),
