@@ -30,9 +30,10 @@ class TransactionList extends StatelessWidget {
                   child: Text(
                     '${transactions[index].amount.toStringAsFixed(2)} €',
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.purple),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ),
                 ),
                 Column(
@@ -43,13 +44,14 @@ class TransactionList extends StatelessWidget {
                       child: Text(
                         transactions[index].title,
                         style: TextStyle(
-                            color: Colors.blue,
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
                     Text(
-                      DateFormat('E dd.MM.yyyy H:m').format(transactions[index].date),
+                      DateFormat('E dd.MM.yyyy H:m')
+                          .format(transactions[index].date),
                       style: TextStyle(color: Colors.grey, fontSize: 14),
                     ),
                   ],
@@ -59,7 +61,6 @@ class TransactionList extends StatelessWidget {
           );
         },
         itemCount: transactions.length,
-          
       ),
     );
   }
