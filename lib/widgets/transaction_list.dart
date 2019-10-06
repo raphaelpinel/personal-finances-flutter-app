@@ -43,10 +43,7 @@ class TransactionList extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 3.0),
                       child: Text(
                         transactions[index].title,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.title,
                       ),
                     ),
                     Text(
