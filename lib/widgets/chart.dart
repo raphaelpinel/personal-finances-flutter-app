@@ -41,7 +41,7 @@ class Chart extends StatelessWidget {
     print('groupedTransactionsValues: $groupedTransactionsValues');
     return Card(
       elevation: 6,
-      margin: EdgeInsets.all(20),
+      margin: EdgeInsets.all(10),
       child: Padding(
         padding: EdgeInsets.all(10),
         child: Row(
