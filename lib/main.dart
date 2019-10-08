@@ -4,6 +4,7 @@ import './models/transaction.dart';
 import './widgets/chart.dart';
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
+import 'widgets/edit_transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -83,10 +84,31 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _editTransaction(String id, String title, double amount, DateTime date) {
+    // Transaction transactionToEdit = _userTransactions.singleWhere((tx) => tx.id == id);
+    setState(() {
+      _userTransactions.singleWhere((tx) => tx.id == id).title = title;
+      _userTransactions.singleWhere((tx) => tx.id == id).amount = amount;
+      _userTransactions.singleWhere((tx) => tx.id == id).date = date;
+    });
+  }
+
   void _deleteTransaction(String id) {
     setState(() {
       _userTransactions.removeWhere((tx) => tx.id == id);
     });
+  }
+
+  void _startEditTransaction(BuildContext ctx, Transaction transaction) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (bCtx) {
+        return GestureDetector(
+          child: EditTransaction(transaction, _editTransaction),
+          behavior: HitTestBehavior.opaque,
+        );
+      },
+    );
   }
 
   void _startAddNewTransaction(BuildContext ctx) {
@@ -118,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Chart(_recentTransactions),
-          TransactionList(_userTransactions, _deleteTransaction),
+          TransactionList(_userTransactions, _deleteTransaction, _startEditTransaction),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
